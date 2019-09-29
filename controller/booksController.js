@@ -8,7 +8,13 @@ const booksController = (Book) => {
     })
   }
 
-  return { get }
+  const post = (req, res) => {
+    const book = new Book(req.body)
+    book.save()
+    return res.status(201).json(book)
+  }
+
+  return { get, post }
 }
 
 export default booksController
